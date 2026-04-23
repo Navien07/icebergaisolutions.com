@@ -91,7 +91,7 @@
   .nav.dark-chrome .nav-cta:hover{background:var(--ice);color:var(--navy-3)}
 
   /* ---------- hero / pinned dive ---------- */
-  .stage{position:relative;height:520vh}
+  .stage{position:relative;height:920vh}
   .stage-pin{position:sticky;top:0;height:100vh;overflow:hidden;background:#0a1426}
 
   /* The photo. We crop it with object-position so hero shows tip, scroll pans down. */
@@ -498,6 +498,7 @@
     .scroll-cue{right:20px;bottom:20px}
     .depth-hud{display:none}
     #svc1,#svc2,#svc3,#svc4{left:6vw;right:6vw;max-width:none}
+    #svc5,#svc6,#svc7,#svc8{left:6vw;right:6vw;max-width:none}
     section{padding:100px 24px}
     .section-lead{grid-template-columns:1fr;gap:12px}
     .section-kick{grid-column:1}
@@ -579,10 +580,14 @@
     <div class="depth-hud" id="hud">
       <div class="marks">
         <div class="mark" data-m="0">Waterline</div>
-        <div class="mark" data-m="1">Receptionist</div>
+        <div class="mark" data-m="1">Voice</div>
         <div class="mark" data-m="2">Chatbot</div>
         <div class="mark" data-m="3">Outbound</div>
         <div class="mark" data-m="4">Data</div>
+        <div class="mark" data-m="5">Workflow</div>
+        <div class="mark" data-m="6">Persona</div>
+        <div class="mark" data-m="7">Vision</div>
+        <div class="mark" data-m="8">Governance</div>
       </div>
       <div class="track"><div class="fill" id="hudFill"></div></div>
     </div>
@@ -615,6 +620,34 @@
       <p>Pipelines, monitoring, executive dashboards. The substrate beneath the visible work — built for ministerial review and board-level scrutiny.</p>
       <div class="stat"><span>Pipelines</span><span>Dashboards</span><span>Custom ETL</span></div>
     </div>
+
+<div class="svc anchor-right" id="svc5">
+  <div class="lead"><span class="ln"></span>Depth · 400m · Abyss layer</div>
+  <h3 data-en="Enterprise Workflow Automation" data-bm="Automasi Aliran Kerja Perusahaan">Enterprise Workflow Automation</h3>
+  <p data-en="Multi-agent pipelines that qualify, route, process, and escalate cases end-to-end. Human involvement triggered only at moments of genuine value." data-bm="Saluran paip multi-ejen yang menilai, menghalakan, memproses, dan meningkatkan kes dari hujung ke hujung. Penglibatan manusia hanya dicetuskan pada saat yang benar-benar bernilai.">Multi-agent pipelines that qualify, route, process, and escalate cases end-to-end. Human involvement triggered only at moments of genuine value.</p>
+  <div class="stat"><span>Multi-agent orchestration</span><span>CRM + ERP native</span><span>Full audit trail</span></div>
+</div>
+
+<div class="svc anchor-left" id="svc6">
+  <div class="lead"><span class="ln"></span>Depth · 600m · Deep layer</div>
+  <h3 data-en="Interactive AI Personas &amp; Avatars" data-bm="Persona &amp; Avatar AI Interaktif">Interactive AI Personas &amp; Avatars</h3>
+  <p data-en="Custom AI personas with bespoke voice, personality, and domain knowledge. Deployed on kiosks, hologram displays, and exhibition installations." data-bm="Persona AI tersuai dengan suara, personaliti, dan pengetahuan domain yang direka khas. Diterapkan pada kiosk, paparan hologram, dan pemasangan pameran.">Custom AI personas with bespoke voice, personality, and domain knowledge. Deployed on kiosks, hologram displays, and exhibition installations.</p>
+  <div class="stat"><span>Custom voice + persona</span><span>Kiosk · Hologram · Web</span><span>BM + EN + dialects</span></div>
+</div>
+
+<div class="svc anchor-right" id="svc7">
+  <div class="lead"><span class="ln"></span>Depth · 800m · Hadal layer</div>
+  <h3 data-en="Multimodal Voice + Vision" data-bm="Suara + Penglihatan Multimodal">Multimodal Voice + Vision</h3>
+  <p data-en="Process text, voice, and image input within a single conversation thread. Facility check-in by document photo. Claim submission by receipt image. Built on ILMU's native multimodal architecture." data-bm="Memproses input teks, suara, dan imej dalam satu utas perbualan. Daftar masuk kemudahan melalui foto dokumen. Penyerahan tuntutan melalui imej resit. Dibina pada seni bina multimodal asli ILMU.">Process text, voice, and image input within a single conversation thread. Facility check-in by document photo. Claim submission by receipt image. Built on ILMU's native multimodal architecture.</p>
+  <div class="stat"><span>Text · Voice · Image</span><span>ILMU multimodal</span><span>Single thread</span></div>
+</div>
+
+<div class="svc anchor-left" id="svc8">
+  <div class="lead"><span class="ln"></span>Depth · 1000m · Foundational layer</div>
+  <h3 data-en="Sovereign Governance Layer" data-bm="Lapisan Tadbir Urus Berdaulat">Sovereign Governance Layer</h3>
+  <p data-en="AIGE seven-principle alignment built into every deployment. Per-decision audit logs. Bias monitoring. Human-in-the-loop checkpoints. Quarterly governance review for your compliance officer." data-bm="Penjajaran tujuh prinsip AIGE dibina dalam setiap penerapan. Log audit setiap keputusan. Pemantauan berat sebelah. Titik semak manusia dalam gelung. Semakan tadbir urus suku tahunan untuk pegawai pematuhan anda.">AIGE seven-principle alignment built into every deployment. Per-decision audit logs. Bias monitoring. Human-in-the-loop checkpoints. Quarterly governance review for your compliance officer.</p>
+  <div class="stat"><span>AIGE-aligned</span><span>Per-decision audit log</span><span>Human-in-the-loop</span></div>
+</div>
 
   </div>
 </div>
@@ -849,7 +882,16 @@ const wlEmph = document.getElementById('wlEmph');
 const hud = document.getElementById('hud');
 const hudFill = document.getElementById('hudFill');
 const nav = document.getElementById('nav');
-const svcs = [document.getElementById('svc1'), document.getElementById('svc2'), document.getElementById('svc3'), document.getElementById('svc4')];
+const svcs = [
+  document.getElementById('svc1'),
+  document.getElementById('svc2'),
+  document.getElementById('svc3'),
+  document.getElementById('svc4'),
+  document.getElementById('svc5'),
+  document.getElementById('svc6'),
+  document.getElementById('svc7'),
+  document.getElementById('svc8'),
+];
 const marks = [...document.querySelectorAll('.depth-hud .mark')];
 
 function update(){
@@ -889,10 +931,14 @@ function update(){
 
   /* Service anchors — each fades in on its band */
   const bands = [
-    [0.14, 0.32],
-    [0.30, 0.50],
-    [0.48, 0.68],
-    [0.66, 0.92],
+    [0.07, 0.20],
+    [0.18, 0.32],
+    [0.30, 0.44],
+    [0.42, 0.56],
+    [0.54, 0.68],
+    [0.66, 0.80],
+    [0.78, 0.90],
+    [0.88, 1.00],
   ];
   bands.forEach((b,i)=>{
     const mid = (b[0]+b[1])/2;
