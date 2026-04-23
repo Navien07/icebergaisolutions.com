@@ -242,10 +242,10 @@
   .svc .more:hover{border-color:#fff}
 
   /* positions of service anchors — centered vertically so full card is always in viewport */
-  #svc1{left:62vw;top:45%}
-  #svc2{left:12vw;top:45%}
-  #svc3{left:62vw;top:45%}
-  #svc4{left:12vw;top:45%}
+  #svc1{left:62vw;top:62%}
+  #svc2{left:12vw;top:62%}
+  #svc3{left:62vw;top:62%}
+  #svc4{left:12vw;top:62%}
 
   /* thin connector line from label toward iceberg */
   .svc.anchor-left{padding-left:0}
@@ -424,6 +424,7 @@
   /* ---------- 6 · FOUNDER CARD ---------- */
   .founder-card{
     max-width:680px;
+    margin:0 auto;
     padding:56px 64px;
     border:1px solid var(--rule);
     background:linear-gradient(135deg, rgba(244,246,248,.04) 0%, rgba(244,246,248,.01) 100%);
@@ -653,7 +654,7 @@
     <div class="proof-label">02 · Partnered and powered by YTL AI Labs</div>
     <div class="ytl-feature reveal">
       <div class="ytl-mark">
-        <div>
+        <div style="display:flex;flex-direction:column;align-items:center;text-align:center">
           <img src="assets/YTL-AILABS_Logo-Locup_B02.png" alt="YTL AI Labs" style="height:100px;width:auto;filter:invert(1);opacity:.9;" />
           <span class="sub">Strategic infrastructure partner</span>
         </div>
@@ -868,7 +869,7 @@ function update(){
   /* Hero copy fades out early */
   const fade = 1 - smooth(0, 0.14, pp);
   heroCopy.style.opacity = fade;
-  heroCopy.style.transform = `translateY(${-pp*60}px)`;
+  heroCopy.style.transform = `translateY(calc(-46% + ${-pp*60}px))`;
   scrollCue.style.opacity = 1 - smooth(0, 0.08, pp);
 
   /* Underwater grading */
