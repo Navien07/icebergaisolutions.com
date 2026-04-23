@@ -77,7 +77,7 @@
   }
   .nav.dark-chrome{mix-blend-mode:normal;color:var(--ice)}
   .nav-brand{display:flex;align-items:center;gap:10px;font-weight:500;letter-spacing:-.005em;font-size:15px}
-  .nav-brand img{height:88px;width:auto;display:block}
+  .nav-brand img{height:120px;width:auto;display:block}
   .nav-center{display:flex;gap:40px;justify-content:center;font-size:14.5px;color:inherit;opacity:.9}
   .nav-center a{opacity:.85;transition:opacity .2s}
   .nav-center a:hover{opacity:1}
@@ -215,48 +215,6 @@
   .depth-hud .mark.active{opacity:1;color:#fff}
   .depth-hud .mark::before{content:"";width:8px;height:1px;background:currentColor}
 
-  /* Service anchor labels — photo-overlay */
-  .svc{
-    position:absolute;z-index:7;color:#fff;max-width:340px;
-    opacity:0;transform:translateY(16px);
-    transition:opacity .6s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1);
-    will-change:opacity, transform;
-    background:rgba(5,15,34,.72);
-    backdrop-filter:blur(12px);
-    -webkit-backdrop-filter:blur(12px);
-    border:1px solid rgba(244,246,248,.12);
-    border-radius:4px;
-    padding:24px 28px;
-  }
-  .svc .lead{
-    display:flex;align-items:center;gap:12px;color:rgba(244,246,248,.75);
-    font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;
-    margin-bottom:14px;
-  }
-  .svc .lead .ln{width:56px;height:1px;background:currentColor;opacity:.6}
-  .svc h3{font-size:26px;font-weight:400;letter-spacing:-.015em;margin:0 0 10px;line-height:1.1}
-  .svc p{font-size:14px;line-height:1.55;color:rgba(244,246,248,.85);margin:0 0 14px;max-width:280px}
-  .svc .stat{
-    font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;
-    color:rgba(244,246,248,.9);padding-top:14px;border-top:1px solid rgba(244,246,248,.2);
-    display:flex;flex-wrap:wrap;gap:14px;
-  }
-  .svc .stat span{white-space:nowrap}
-  .svc .stat span::before{content:"· ";opacity:.5}
-  .svc .stat span:first-child::before{content:""}
-  .svc .more{display:inline-flex;align-items:center;gap:8px;margin-top:18px;font-size:13px;color:#fff;border-bottom:1px solid rgba(244,246,248,.3);padding-bottom:3px;transition:border-color .2s}
-  .svc .more:hover{border-color:#fff}
-
-  /* positions of service anchors — centered vertically so full card is always in viewport */
-  #svc1{left:62vw;top:45%}
-  #svc2{left:12vw;top:45%}
-  #svc3{left:62vw;top:45%}
-  #svc4{left:12vw;top:45%}
-
-  /* thin connector line from label toward iceberg */
-  .svc.anchor-left{padding-left:0}
-  .svc.anchor-left .lead .ln{order:-1}
-  .svc.anchor-right .lead{flex-direction:row-reverse;justify-content:flex-end}
 
   /* ---------- sections ---------- */
   section{padding:140px 40px;max-width:1280px;margin:0 auto}
@@ -592,35 +550,6 @@
       <div class="track"><div class="fill" id="hudFill"></div></div>
     </div>
 
-    <!-- Service anchors (overlaid on underwater photo as user dives) -->
-    <div class="svc anchor-left" id="svc1">
-      <div class="lead"><span class="ln"></span>Depth · 5m · Surface layer</div>
-      <h3>AI Receptionist</h3>
-      <p>Never miss an inbound call. Bilingual, calendar-aware, handling intake and triage the moment your line rings — day one or day zero-hour.</p>
-      <div class="stat"><span>Sub-3s response</span><span>24/7</span><span>EN + BM</span></div>
-    </div>
-
-    <div class="svc anchor-right" id="svc2">
-      <div class="lead"><span class="ln"></span>Depth · 40m · Mid layer</div>
-      <h3>AI Chatbot</h3>
-      <p>A single agent across WhatsApp, website, Instagram and Facebook — trained on your actual product, policies and tone. Consistent on every channel.</p>
-      <div class="stat"><span>Omnichannel</span><span>Trained on your data</span><span>Sub-3s reply</span></div>
-    </div>
-
-    <div class="svc anchor-left" id="svc3">
-      <div class="lead"><span class="ln"></span>Depth · 120m · Deeper layer</div>
-      <h3>AI Outbound Caller</h3>
-      <p>Automated prospecting, qualification and follow-up at scale. Speaks to ten thousand contacts a day without losing tone, judgement, or cadence.</p>
-      <div class="stat"><span>Qualified leads</span><span>CRM-native</span><span>Scales linearly</span></div>
-    </div>
-
-    <div class="svc anchor-right" id="svc4">
-      <div class="lead"><span class="ln"></span>Depth · 240m · Base layer</div>
-      <h3>Data &amp; Intelligence</h3>
-      <p>Pipelines, monitoring, executive dashboards. The substrate beneath the visible work — built for ministerial review and board-level scrutiny.</p>
-      <div class="stat"><span>Pipelines</span><span>Dashboards</span><span>Custom ETL</span></div>
-    </div>
-
   </div>
 </div>
 
@@ -854,7 +783,6 @@ const wlEmph = document.getElementById('wlEmph');
 const hud = document.getElementById('hud');
 const hudFill = document.getElementById('hudFill');
 const nav = document.getElementById('nav');
-const svcs = [document.getElementById('svc1'), document.getElementById('svc2'), document.getElementById('svc3'), document.getElementById('svc4')];
 const marks = [...document.querySelectorAll('.depth-hud .mark')];
 
 function update(){
@@ -892,21 +820,6 @@ function update(){
   hud.style.opacity = hudOn ? smooth(0.08, 0.22, pp) * (1 - smooth(0.95,1,pp)) : 0;
   hudFill.style.height = (pp*100) + '%';
 
-  /* Service anchors — each fades in on its band */
-  const bands = [
-    [0.14, 0.32],
-    [0.30, 0.50],
-    [0.48, 0.68],
-    [0.66, 0.92],
-  ];
-  bands.forEach((b,i)=>{
-    const mid = (b[0]+b[1])/2;
-    const t = smooth(b[0], mid, pp) * (1 - smooth(mid, b[1], pp));
-    svcs[i].style.opacity = t;
-    svcs[i].style.transform = `translateY(calc(-50% + ${(1-t)*16}px))`;
-    marks[i+1].classList.toggle('active', pp>=b[0] && pp<=b[1]);
-  });
-  marks[0].classList.toggle('active', pp<bands[0][0]);
 
   /* Nav chrome: light on hero, dark on white sections */
   const belowStage = r.bottom <= window.innerHeight * 0.2;
