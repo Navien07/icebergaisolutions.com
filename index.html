@@ -600,6 +600,7 @@
   <div class="nav-center">
     <a href="#services">Services</a>
     <a href="#work">Work</a>
+    <a href="#industries">Industries</a>
     <a href="#engage">Engagement</a>
     <a href="#team">Team</a>
   </div>
@@ -1092,18 +1093,23 @@
     </div>
     <div class="foot-col">
       <h5>Services</h5>
-      <a href="#">AI Receptionist</a>
-      <a href="#">AI Chatbot</a>
-      <a href="#">AI Outbound Caller</a>
-      <a href="#">Data &amp; Intelligence</a>
-      <a href="#">Enterprise automation</a>
+      <a href="#services">AI Voice Receptionist</a>
+      <a href="#services">Multi-Channel AI Chatbot</a>
+      <a href="#services">AI Outbound Caller</a>
+      <a href="#services">Data &amp; Intelligence</a>
+      <a href="#services">Enterprise Workflow</a>
+      <a href="#services">AI Personas &amp; Avatars</a>
+      <a href="#services">Multimodal Voice + Vision</a>
+      <a href="#services">Sovereign Governance</a>
     </div>
     <div class="foot-col">
       <h5>Company</h5>
-      <a href="#">About</a>
-      <a href="#">Engagements</a>
-      <a href="#">Principles</a>
-      <a href="#">Careers</a>
+      <a href="#ilmu">ILMU &amp; Sovereignty</a>
+      <a href="#work">Engagements</a>
+      <a href="#compare">Why Iceberg</a>
+      <a href="#industries">Industries</a>
+      <a href="#team">Team</a>
+      <a href="https://wa.me/601128542591" target="_blank" rel="noopener">Careers</a>
     </div>
     <div class="foot-col">
       <h5>Contact</h5>
@@ -1243,10 +1249,15 @@ const io = new IntersectionObserver(entries=>{
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
 /* ---------- lang toggle ---------- */
-document.querySelectorAll('.lang button').forEach(b=>{
-  b.addEventListener('click', ()=>{
-    document.querySelectorAll('.lang button').forEach(x=>x.classList.remove('on'));
+document.querySelectorAll('.lang button').forEach(b => {
+  b.addEventListener('click', () => {
+    document.querySelectorAll('.lang button').forEach(x => x.classList.remove('on'));
     b.classList.add('on');
+    const lang = b.textContent.trim() === 'BM' ? 'bm' : 'en';
+    document.querySelectorAll('[data-en]').forEach(el => {
+      const val = el.getAttribute('data-' + lang) || el.getAttribute('data-en');
+      if (val) el.innerHTML = val;
+    });
   });
 });
 
@@ -1263,6 +1274,64 @@ function setTweak(k,v){ TWEAKS[k]=v; applyTweaks(); try{window.parent.postMessag
 document.getElementById('diveSpeed').addEventListener('input', e=>setTweak('diveSpeed', parseFloat(e.target.value)));
 document.getElementById('atmos').addEventListener('input', e=>setTweak('atmos', parseFloat(e.target.value)));
 document.getElementById('hudOn').addEventListener('change', e=>setTweak('hudOn', parseInt(e.target.value)));
+
+/* ---------- GSAP scroll animations for new sections ---------- */
+(function(){
+  const s1 = document.createElement('script');
+  s1.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js';
+  s1.onload = function(){
+    const s2 = document.createElement('script');
+    s2.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js';
+    s2.onload = function(){
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Staggered grid cards
+      gsap.utils.toArray('.problem-card, .industry-card, .ilmu-card').forEach((card, i) => {
+        gsap.fromTo(card,
+          { opacity: 0, y: 28 },
+          { opacity: 1, y: 0, duration: 0.65, ease: 'power2.out',
+            delay: (i % 3) * 0.1,
+            scrollTrigger: { trigger: card, start: 'top 90%', toggleActions: 'play none none none' }
+          }
+        );
+      });
+
+      // Comparison table rows
+      gsap.utils.toArray('.compare-row').forEach((row, i) => {
+        gsap.fromTo(row,
+          { opacity: 0, x: -16 },
+          { opacity: 1, x: 0, duration: 0.45, ease: 'power2.out',
+            delay: i * 0.07,
+            scrollTrigger: { trigger: row, start: 'top 92%', toggleActions: 'play none none none' }
+          }
+        );
+      });
+
+      // ILMU stat numbers
+      gsap.utils.toArray('.ilmu-stat').forEach((stat, i) => {
+        gsap.fromTo(stat,
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out',
+            delay: i * 0.14,
+            scrollTrigger: { trigger: stat, start: 'top 88%', toggleActions: 'play none none none' }
+          }
+        );
+      });
+
+      // Section h2 headings
+      gsap.utils.toArray('.section-ilmu h2, .section-problems h2, .section-industries h2, .section-compare h2').forEach(h => {
+        gsap.fromTo(h,
+          { opacity: 0, y: 22 },
+          { opacity: 1, y: 0, duration: 0.85, ease: 'power3.out',
+            scrollTrigger: { trigger: h, start: 'top 86%', toggleActions: 'play none none none' }
+          }
+        );
+      });
+    };
+    document.head.appendChild(s2);
+  };
+  document.head.appendChild(s1);
+})();
 
 window.addEventListener('message', e=>{
   const d=e.data||{};
