@@ -217,22 +217,28 @@
 
   /* Service anchor labels — photo-overlay */
   .svc{
-    position:absolute;z-index:7;color:#fff;max-width:320px;
+    position:absolute;z-index:7;color:#fff;max-width:340px;
     opacity:0;transform:translateY(16px);
     transition:opacity .6s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1);
     will-change:opacity, transform;
+    background:rgba(5,15,34,.72);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    border:1px solid rgba(244,246,248,.12);
+    border-radius:4px;
+    padding:24px 28px;
   }
   .svc .lead{
-    display:flex;align-items:center;gap:12px;color:rgba(244,246,248,.65);
+    display:flex;align-items:center;gap:12px;color:rgba(244,246,248,.75);
     font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;
     margin-bottom:14px;
   }
   .svc .lead .ln{width:56px;height:1px;background:currentColor;opacity:.6}
   .svc h3{font-size:26px;font-weight:400;letter-spacing:-.015em;margin:0 0 10px;line-height:1.1}
-  .svc p{font-size:14px;line-height:1.55;color:rgba(244,246,248,.75);margin:0 0 14px;max-width:280px}
+  .svc p{font-size:14px;line-height:1.55;color:rgba(244,246,248,.85);margin:0 0 14px;max-width:280px}
   .svc .stat{
     font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;
-    color:rgba(244,246,248,.85);padding-top:14px;border-top:1px solid rgba(244,246,248,.2);
+    color:rgba(244,246,248,.9);padding-top:14px;border-top:1px solid rgba(244,246,248,.2);
     display:flex;flex-wrap:wrap;gap:14px;
   }
   .svc .stat span{white-space:nowrap}
