@@ -473,6 +473,73 @@
   .closing .phone{color:rgba(244,246,248,.8);font-size:14.5px;display:flex;align-items:center;gap:10px}
   .closing .phone .lab2{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(244,246,248,.5)}
 
+  /* ---------- SHARED LAYOUT FOR NEW SECTIONS ---------- */
+.section-inner-wide{max-width:1280px;margin:0 auto}
+.section-body{font-size:clamp(15px,1.1vw,17px);line-height:1.65;color:var(--muted);max-width:760px;margin:0 0 64px}
+
+/* ---------- 02b · ILMU ---------- */
+.section-ilmu{padding:120px 40px;border-top:1px solid var(--rule)}
+.ilmu-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin:64px 0;border:1px solid var(--rule)}
+.ilmu-stat{padding:40px 36px;border-right:1px solid var(--rule);background:var(--panel)}
+.ilmu-stat:last-child{border-right:none}
+.ilmu-n{font-size:clamp(36px,3.5vw,56px);font-weight:300;letter-spacing:-.025em;color:#fff;margin-bottom:12px;font-family:'Fraunces',Georgia,serif;font-style:italic}
+.ilmu-label{font-size:13.5px;color:var(--muted);line-height:1.5;max-width:240px}
+.ilmu-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+.ilmu-card{padding:32px 28px;border:1px solid var(--rule);background:var(--panel);transition:background .3s}
+.ilmu-card:hover{background:var(--panel-strong)}
+.ilmu-card-icon{font-size:20px;margin-bottom:16px}
+.ilmu-card-title{font-size:15px;font-weight:500;color:var(--ice);margin-bottom:10px;letter-spacing:-.01em}
+.ilmu-card-body{font-size:13.5px;color:var(--muted);line-height:1.55}
+
+/* ---------- 03b · PROBLEMS ---------- */
+.section-problems{padding:120px 40px;border-top:1px solid var(--rule)}
+.problems-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:64px}
+.problem-card{padding:40px 32px;border:1px solid var(--rule);background:var(--panel);transition:background .3s,transform .3s}
+.problem-card:hover{background:var(--panel-strong);transform:translateY(-2px)}
+.problem-num{color:var(--glacier-2);margin-bottom:20px;font-size:11px}
+.problem-card h4{font-size:18px;font-weight:500;letter-spacing:-.012em;color:#fff;margin:0 0 14px}
+.problem-card p{font-size:13.5px;color:var(--muted);line-height:1.6;margin:0}
+
+/* ---------- 03c · INDUSTRIES ---------- */
+.section-industries{padding:120px 40px;border-top:1px solid var(--rule)}
+.industries-scroll-track{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:64px}
+.industry-card{padding:40px 32px;border:1px solid var(--rule);background:var(--panel);transition:background .3s}
+.industry-card:hover{background:var(--panel-strong)}
+.industry-num{color:var(--glacier-2);margin-bottom:20px;font-size:11px}
+.industry-card h4{font-size:17px;font-weight:500;letter-spacing:-.01em;color:#fff;margin:0 0 12px}
+.industry-card p{font-size:13.5px;color:var(--muted);line-height:1.6;margin:0 0 20px}
+.industry-tag{font-size:10px;color:var(--glacier);letter-spacing:.12em}
+
+/* ---------- 04b · COMPARISON ---------- */
+.section-compare{padding:120px 40px;border-top:1px solid var(--rule)}
+.compare-table{margin-top:64px;border:1px solid var(--rule);border-radius:4px;overflow:hidden}
+.compare-header,.compare-row{display:grid;grid-template-columns:1.2fr 1.8fr 2fr}
+.compare-header{background:var(--panel-strong);border-bottom:1px solid var(--rule)}
+.compare-col-label,.compare-col-them,.compare-col-us{padding:18px 24px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-2)}
+.compare-col-us{color:var(--glacier)}
+.compare-row{border-bottom:1px solid var(--rule);transition:background .25s}
+.compare-row:last-child{border-bottom:none}
+.compare-row:hover{background:var(--panel)}
+.compare-feature,.compare-them,.compare-us{padding:22px 24px;font-size:14px;line-height:1.5;color:var(--muted)}
+.compare-feature{color:var(--ice);font-weight:500;border-right:1px solid var(--rule)}
+.compare-them{border-right:1px solid var(--rule);color:rgba(244,246,248,.45)}
+.compare-us{color:var(--ice);position:relative}
+.compare-us::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);width:2px;height:60%;background:var(--glacier);opacity:.5}
+
+/* ---------- RESPONSIVE new sections ---------- */
+@media(max-width:980px){
+  .ilmu-stats{grid-template-columns:1fr}
+  .ilmu-grid{grid-template-columns:1fr 1fr}
+  .problems-grid{grid-template-columns:1fr}
+  .industries-scroll-track{grid-template-columns:1fr}
+  .compare-header{display:none}
+  .compare-row{grid-template-columns:1fr}
+  .compare-feature{border-right:none;border-bottom:1px solid var(--rule)}
+  .compare-them{border-right:none;border-bottom:1px solid var(--rule)}
+  .compare-us::before{display:none}
+  .section-ilmu,.section-problems,.section-industries,.section-compare{padding:80px 24px}
+}
+
   /* ---------- footer ---------- */
   footer{background:#01060f;color:var(--ice);padding:56px 40px 40px;border-top:1px solid rgba(255,255,255,.08)}
   .foot-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px}
